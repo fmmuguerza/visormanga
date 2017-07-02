@@ -7,14 +7,16 @@ class Manga(models.Model):
     author = models.CharField(max_length=200)
     created_at = models.DateTimeField('date published')
     updated_at = models.DateTimeField('date updated')
-    
+
+
 class Chapter(models.Model):
     manga = models.ForeignKey(Manga, related_name='chapters')
     chapter_title = models.CharField(max_length=200)
     chapter = models.IntegerField(default=0)
     created_at = models.DateTimeField('date published')
     updated_at = models.DateTimeField('date updated')
-    
+
+
 class Page(models.Model):
     chapter = models.ForeignKey(Chapter, related_name='images')
     image = models.ImageField()
